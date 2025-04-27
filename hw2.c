@@ -17,12 +17,14 @@ int main(void)
 	
 	system("pause");
     system("cls");    
-for (n=1;n<=3;n++)
-    {    
+    
        printf("請輸入密碼(密碼為2025):");  
        scanf("%d", &password);           //輸入密碼 
-
-        if(password==2025)               //密碼審核 
+for (n=1;n<=2;n++)                       //錯誤3次會跳離 
+    { 
+        
+		system("cls");
+		if(password==2025)               //密碼審核 
            {
 		   printf("輸入正確，歡迎!!\n");
 		   system("pause");
@@ -30,9 +32,13 @@ for (n=1;n<=3;n++)
            break;
 		   }
         else
-		   {
-			printf("輸入錯誤，請再輸入一次:");
-		   } 
+           {
+          printf("密碼錯誤(已錯誤%d次)，請重新輸入密碼(密碼為2025):",n);  
+          scanf("%d", &password);  	 
+           }
+	
+			
+		   
 	} 
 
 
