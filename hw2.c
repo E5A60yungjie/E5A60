@@ -3,10 +3,11 @@
 #include <conio.h>
 #include <string.h>
 #include <time.h>
+void casebegin(void);
 void casea(void);
 void caseb(void);
 void casec(void);
-void cased(void);
+
 
 
 int main(void)
@@ -56,14 +57,8 @@ if(n==3)
 }
 /**************************************************/     /*第二題*/	
 
-    printf(" ---------------------------\n");             
-	printf("|    a.畫出直角三角形       |\n");
-    printf("|    b.顯示乘法表           |\n");
-	printf("|    c.結束                 |\n");
-	printf(" ---------------------------\n\n");
-
 while(1){
-
+    casebegin(); 
     userinput=getch();
                 if (userinput == 'A' || userinput == 'a') {
                 casea();
@@ -76,20 +71,22 @@ while(1){
                 if (userinput == 'C' || userinput == 'c') {
                     casec();
                     getch(); 
-                    }
-				if (userinput == 'D' || userinput == 'd') {
-                    cased();
-                    getch();
-					break; 
+                    break;  
                      } 
     
 
 }
 }	
 
- 
-
-
+void casebegin(void)
+{
+    printf(" ---------------------------\n");             
+	printf("|    a.畫出直角三角形       |\n");
+    printf("|    b.顯示乘法表           |\n");
+	printf("|    c.結束                 |\n");
+	printf(" ---------------------------\n\n"); 
+return;
+} 
 
 void casea(void)
 {
@@ -116,10 +113,11 @@ while (1)
 		{
 		 
             printf("無效輸入，請重新輸入");
-            flush(stdin);
+            fflush(stdin);
         }
     }
 } 
+
 
 void caseb(void)
 {
