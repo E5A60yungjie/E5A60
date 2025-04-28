@@ -3,12 +3,17 @@
 #include <conio.h>
 #include <string.h>
 #include <time.h>
+void casea(void);
+void caseb(void);
+void casec(void);
+void cased(void);
+
 
 int main(void)
 { 
 /**************************************************/   /*宣告變數*/ 
 	int password=0,n; 
-	char userinput,input2;
+	char userinput; 
 	
 /**************************************************/ 	
 	printf("這是E5A60的第二份程式作業\n");                                        //個人封面(題目1) 
@@ -57,11 +62,39 @@ if(n==3)
 	printf("|    c.結束                 |\n");
 	printf(" ---------------------------\n\n");
 
+while(1){
+
+    userinput=getch();
+                if (userinput == 'A' || userinput == 'a') {
+                casea();
+                     
+                    }
+                if (userinput == 'B' || userinput == 'b') {
+                    caseb();
+                    getch(); 
+                    }
+                if (userinput == 'C' || userinput == 'c') {
+                    casec();
+                    getch(); 
+                    }
+				if (userinput == 'D' || userinput == 'd') {
+                    cased();
+                    getch();
+					break; 
+                     } 
+    
+
+}
 }	
 
-userinput=getch();
-if (userinput == 'A' || userinput == 'a')
+ 
 
+
+
+void casea(void)
+{
+char input2;
+system("cls");	
 while (1) 
     {
     printf("請輸入一個a~n的字元");
@@ -86,6 +119,6 @@ while (1)
             flush(stdin);
         }
     }
-
+} 
 
 
