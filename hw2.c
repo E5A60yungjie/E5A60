@@ -5,9 +5,12 @@
 #include <time.h>
 
 int main(void)
-{
+{ 
+/**************************************************/   /*宣告變數*/ 
 	int password=0,n; 
+	char userinput,input2;
 	
+/**************************************************/ 	
 	printf("這是E5A60的第二份程式作業\n");                                        //個人封面(題目1) 
 	printf("EEEEEE    55555        AAA          66666     00000\n");
     printf("E        5            A   A        6          0   0\n");
@@ -55,5 +58,34 @@ if(n==3)
 	printf(" ---------------------------\n\n");
 
 }	
+
+userinput=getch();
+if (userinput == 'A' || userinput == 'a')
+
+while (1) 
+    {
+    printf("請輸入一個a~n的字元");
+    fflush(stdin);
+    scanf("%c", &input2);
+
+        if( input2>= 'a' && input2<= 'n')
+		{
+        int i,j,n=97;
+	            for(i=(int)input2;n<=i;i--)
+				{
+                   for(j=97;j<=i;j++)
+                    printf("%c",j);
+                    printf("\n");
+				}
+        break;
+		}
+         else 
+		{
+		 
+            printf("無效輸入，請重新輸入");
+            flush(stdin);
+        }
+    }
+
 
 
