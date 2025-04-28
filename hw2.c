@@ -1,9 +1,9 @@
-#include <stdio.h>
+#include <stdio.h>                            //各種標頭檔的宣告 
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
 #include <time.h>
-void casebegin(void);
+void casebegin(void);                           //各種函式的宣告 
 void casea(void);
 void caseb(void);
 void casec(void);
@@ -14,7 +14,7 @@ int main(void)
 { 
 /**************************************************/   /*宣告變數*/ 
 	int password=0,n; 
-	char userinput; 
+	char userinput,y; 
 	
 /**************************************************/ 	
 	printf("這是E5A60的第二份程式作業\n");                                        //個人封面(題目1) 
@@ -71,11 +71,13 @@ while(1){
                 if (userinput == 'C' || userinput == 'c') {
                     casec();
                     getch(); 
-                    break;  
+                    break; 
                      } 
     
 
 }
+
+
 }	
 
 void casebegin(void)
@@ -89,7 +91,7 @@ void casebegin(void)
 return;
 } 
 
-void casea(void)
+void casea(void)                          //題目3 
 {
     char input2;
     system("cls");    
@@ -97,39 +99,40 @@ void casea(void)
     {
         printf("請輸入一個a~n的字元：");
         
-        fflush(stdin);  
+        fflush(stdin);  // 清空緩衝區
         scanf("%c", &input2);
 
         if (input2 >= 'a' && input2 <= 'n')
         {
-            int i, j, n = 97;  
+            int i, j, n = 97;  // n 是 'a' 的 ASCII 值
 
             
-            for (i = (int)input2; i >= n; i--) 
+            for (i = n; input2 >= i; i++) 
             {
-            printf(" ");  
-                for (j = n; j <= (int)input2 ; j++) 
+                
+                for (j = 0; j < (input2 - i); j++) 
                 {
-                	if(j!=(int)input2){printf(" "); 
-					}
-                    else
-					{
-					 printf("%c",input2) ;
-					 } 
+                    printf(" "); 
                 }
+
+               
+                for (j = n; j <= i; j++) 
+                {
+                    printf("%c", j);
+                 
+				}
                 
-                
-                printf("\n");
+                printf("\n"); 
             }
-            break;
+            break;  
         }
         else 
         {
             printf("無效輸入，請重新輸入。\n");
-            fflush(stdin); 
+            fflush(stdin);  
         }
     }
-    system("pause");
+    system("pause"); 
 }
 
 
@@ -137,7 +140,9 @@ void casea(void)
 
 
 
-void caseb(void) {
+
+
+void caseb(void) {                          //題目4 
 
     int input3, i, j;
 
@@ -150,11 +155,13 @@ void caseb(void) {
             printf("\n乘法表：\n");
 
             
-            for (i = 1; i <= input3; i++) {           /*產生乘法表，從 1 到 input3*/ 
-                for (j = 1; j <= input3; j++) {
-                    printf("%2d ", i * j);  
-                }
-                printf("\n");  
+            for (i = 1; i <= input3; i++)  /* 外層迴圈 */
+            {
+               for (j = 1; j <= input3; j++)  /* 內層迴圈 */
+               {
+               printf("%d*%d=%2d ", i, j, i * j);
+               }
+            printf("\n");  
             }
             break; 
         } else {
@@ -164,14 +171,15 @@ void caseb(void) {
     }
 }
 
-void casec(void)
+void casec(void)                           //題目5 
 {
  char y;
  printf("Continue?(y/n):");
+ fflush(stdin);  
  scanf("%c",&y);
   if (y == 'Y' || y == 'y') { 
     casebegin();} 
   if (y == 'N' || y == 'n') { 
-    system("pause");
+    system("pause"); 
 	return; } 
 }
