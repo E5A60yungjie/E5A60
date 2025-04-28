@@ -49,7 +49,7 @@ for (n=1;n<=2;n++)                       //錯誤3次會跳離
            }
 	} 
 
-if(n==3)
+if(n==4)
 {
 	printf("已錯誤3次，程式結束\a");
 	system("pause");
@@ -80,6 +80,7 @@ while(1){
 
 void casebegin(void)
 {
+	system("cls");
     printf(" ---------------------------\n");             
 	printf("|    a.畫出直角三角形       |\n");
     printf("|    b.顯示乘法表           |\n");
@@ -90,64 +91,75 @@ return;
 
 void casea(void)
 {
-char input2;
-system("cls");	
-while (1) 
+    char input2;
+    system("cls");    
+    while (1) 
     {
-    printf("請輸入一個a~n的字元");
-    fflush(stdin);
-    scanf("%c", &input2);
+        printf("請輸入一個a~n的字元：");
+        
+        fflush(stdin);  
+        scanf("%c", &input2);
 
-        if( input2>= 'a' && input2<= 'n')
-		{
-        int i,j,n=97;
-	            for(i=(int)input2;n<=i;i--)
-				{
-                   for(j=97;j<=i;j++)
-                    printf("%c",j);
-                    printf("\n");
-				}
-        break;
+        if (input2 >= 'a' && input2 <= 'n')
+        {
+            int i, j, n = 97;  
+
+            
+            for (i = (int)input2; i >= n; i--) 
+            {
+            printf(" ");  
+                for (j = n; j <= (int)input2 ; j++) 
+                {
+                	if(j!=(int)input2){printf(" "); 
+					}
+                    else
+					{
+					 printf("%c",input2) ;
+					 } 
+                }
+                
+                
+                printf("\n");
+            }
+            break;
         }
-         else 
-		{
-		 
-            printf("無效輸入，請重新輸入");
-            fflush(stdin);
+        else 
+        {
+            printf("無效輸入，請重新輸入。\n");
+            fflush(stdin); 
         }
     }
-} 
+    system("pause");
+}
 
 
-void caseb(void)
-{
-int input3,i,k,j;
 
-while (1) {	
-	printf("請輸入一個1~9的數字");
-    fflush(stdin);
-    scanf("%d", &input3);
-    
-        if ( input3>= 1 && input3<= 9)
-		{
-             for (i=1; i<=input3; i++) 
-		   {
-                for (k=1; k<=input3 - i; k++) 
-				{
-                printf(" ");
+
+
+
+void caseb(void) {
+
+    int input3, i, j;
+
+    while (1) {    
+        printf("請輸入一個1~9的數字: ");
+        fflush(stdin);  
+        scanf("%d", &input3);
+        
+        if (input3 >= 1 && input3 <= 9) {
+            printf("\n乘法表：\n");
+
+            
+            for (i = 1; i <= input3; i++) {           /*產生乘法表，從 1 到 input3*/ 
+                for (j = 1; j <= input3; j++) {
+                    printf("%2d ", i * j);  
                 }
-
-            for (j=1; j<=i; j++) 
-		     {
-              printf("%d", j);
-             }
-            printf("\n");
+                printf("\n");  
             }
-        break;}
-        else 
-		{
-		printf("輸入不再1~9之間，請重新輸入\a");
-        fflush(stdin);
+            break; 
+        } else {
+            printf("輸入不在1~9之間，請重新輸入。\n");
+            fflush(stdin);  
         }
     }
 }
@@ -157,9 +169,9 @@ void casec(void)
  char y;
  printf("Continue?(y/n):");
  scanf("%c",&y);
-  if (y == 'Y' || y == 'y') 
-    casebegin();
-  if (y == 'N' || y == 'n') 
+  if (y == 'Y' || y == 'y') { 
+    casebegin();} 
+  if (y == 'N' || y == 'n') { 
     system("pause");
-	return; 
+	return; } 
 }
