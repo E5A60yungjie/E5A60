@@ -123,7 +123,7 @@ while (1)
 
 void caseb(void)
 {
-int input3;
+int input3,i,k,j;
 
 while (1) {	
 	printf("請輸入一個1~9的數字");
@@ -132,14 +132,14 @@ while (1) {
     
         if ( input3>= 1 && input3<= 9)
 		{
-             for (int i = 1; i <= input3; i++) 
+             for (i=1; i<=input3; i++) 
 		   {
-                for (int k = 1; k <= input3 - i; k++) 
+                for (k=1; k<=input3 - i; k++) 
 				{
                 printf(" ");
                 }
 
-            for (int j = 1; j <= i; j++) 
+            for (j=1; j<=i; j++) 
 		     {
               printf("%d", j);
              }
@@ -152,4 +152,16 @@ while (1) {
         fflush(stdin);
         }
     }
+}
+
+void casec(void)
+{
+ char y;
+ printf("Continue?(y/n):");
+ scanf("%c",&y);
+  if (y == 'Y' || y == 'y') 
+    casebegin();
+  if (y == 'N' || y == 'n') 
+    system("pause");
+	return; 
 }
