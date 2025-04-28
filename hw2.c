@@ -60,17 +60,24 @@ if(n==4)
 while(1){
     casebegin(); 
     userinput=getch();
-                if (userinput == 'A' || userinput == 'a') {
+                
+				if (userinput == 'A' || userinput == 'a') {
                 casea();
                      
                     }
                 if (userinput == 'B' || userinput == 'b') {
                     caseb();
-                    getch(); 
+                    getch();
+                    ; 
                     }
                 if (userinput == 'C' || userinput == 'c') {
                     casec();
-                    getch();} 
+                    scanf("%c",&y);
+                if (y == 'N' || y == 'n') { 
+	            system("pause"); 
+                return 0; } 
+                    
+                   } 
                      
                       
     
@@ -116,7 +123,7 @@ void casea(void)                          //題目3
                 }
 
                
-                for (j = n; j <= i; j++) 
+                for (j = 97+input2-i ; j <=input2 ;j++ ) 
                 {
                      printf("%c",j);
                   
@@ -177,10 +184,5 @@ void casec(void)                           //題目5
  
  printf("Continue?(y/n):");
  fflush(stdin);  
- scanf("%c",&y);
-  if (y == 'Y' || y == 'y') { 
-    casebegin();} 
-  if (y == 'N' || y == 'n') { 
-    system("pause"); 
-	return; } 
+   
 }
