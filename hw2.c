@@ -111,7 +111,7 @@ while (1)
                     printf("\n");
 				}
         break;
-		}
+        }
          else 
 		{
 		 
@@ -121,4 +121,35 @@ while (1)
     }
 } 
 
+void caseb(void)
+{
+int input3;
 
+while (1) {	
+	printf("請輸入一個1~9的數字");
+    fflush(stdin);
+    scanf("%d", &input3);
+    
+        if ( input3>= 1 && input3<= 9)
+		{
+             for (int i = 1; i <= input3; i++) 
+		   {
+                for (int k = 1; k <= input3 - i; k++) 
+				{
+                printf(" ");
+                }
+
+            for (int j = 1; j <= i; j++) 
+		     {
+              printf("%d", j);
+             }
+            printf("\n");
+            }
+        break;}
+        else 
+		{
+		printf("輸入不再1~9之間，請重新輸入\a");
+        fflush(stdin);
+        }
+    }
+}
