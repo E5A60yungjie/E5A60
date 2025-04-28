@@ -7,7 +7,7 @@ void casebegin(void);                           //各種函式的宣告
 void casea(void);
 void caseb(void);
 void casec(void);
-
+char y;
 
 
 int main(void)
@@ -70,9 +70,9 @@ while(1){
                     }
                 if (userinput == 'C' || userinput == 'c') {
                     casec();
-                    getch(); 
-                    break; 
-                     } 
+                    getch();} 
+                     
+                      
     
 
 }
@@ -118,8 +118,8 @@ void casea(void)                          //題目3
                
                 for (j = n; j <= i; j++) 
                 {
-                    printf("%c", j);
-                 
+                     printf("%c",j);
+                  
 				}
                 
                 printf("\n"); 
@@ -129,6 +129,7 @@ void casea(void)                          //題目3
         else 
         {
             printf("無效輸入，請重新輸入。\n");
+            system("cls"); 
             fflush(stdin);  
         }
     }
@@ -145,7 +146,7 @@ void casea(void)                          //題目3
 void caseb(void) {                          //題目4 
 
     int input3, i, j;
-
+    system("cls");
     while (1) {    
         printf("請輸入一個1~9的數字: ");
         fflush(stdin);  
@@ -173,7 +174,7 @@ void caseb(void) {                          //題目4
 
 void casec(void)                           //題目5 
 {
- char y;
+ 
  printf("Continue?(y/n):");
  fflush(stdin);  
  scanf("%c",&y);
