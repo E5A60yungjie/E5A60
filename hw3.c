@@ -3,12 +3,16 @@
 #include <conio.h>
 #include <string.h>
 #include <time.h>
+#define SIZE 9
+
+#define ROWS 9
+#define COLS 9
 
 int main(void)
 {
-	int password=0,n; 
+	int password=0,n,row, col; 
 	char userinput,y;
-	
+	char seats[SIZE][SIZE];
 /*********************************************************************/ 	
 	
 	printf("這是E5A60的第三份程式作業\n");                                        //個人封面(題目1) 
@@ -47,6 +51,7 @@ if(n==4)
 	system("pause");
     return 0;}
 	
+randnsit(seats);	
 /*********************************************************************/       //主選單  
 
 while(1){
@@ -80,7 +85,7 @@ while(1){
                     
                    
         }	
-randnsit(seats);	
+	
 
 } 
 /*********************************************************************/    //產生10個隨機座位
@@ -95,7 +100,7 @@ void randnsit(char seats[ROWS][COLS]) {
         int c = rand() % COLS;
         if (seats[r][c] != '*') {
             seats[r][c] = '*';
-            count++;
+            
         }
     }    
 } 
@@ -109,3 +114,28 @@ void casebegin(void)
 	printf("|    d. Exit                 |\n");
 	printf(" ---------------------------\n\n"); 
 return;
+}
+
+void casea(char seats[SIZE][SIZE]) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            printf("%c ", seats[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+
+void caseb(char seats[SIZE][SIZE], int row, int col) {
+    if (seats[row][col] == '-') {
+        seats[row][col] = '*';
+        printf("座位 %d, %d 預約成功！\n", row + 1, col + 1);
+    } else {
+        printf("這個座位已被預約！\n");
+    }
+}
+
+
+
+
+
