@@ -3,10 +3,17 @@
 #include <conio.h>
 #include <string.h>
 #include <time.h>
-#define SIZE 9
 
+#define SIZE 9
 #define ROWS 9
 #define COLS 9
+
+void randsit(char seats[ROWS][COLS]);
+void casebegin(void);
+void casea(char seats[SIZE][SIZE]);
+void caseb(char seats[SIZE][SIZE]);
+void casec(char seats[SIZE][SIZE]);
+void cased(void);
 
 int main(void)
 {
@@ -47,10 +54,18 @@ for (n=1;n<=2;n++)                       //錯誤3次會跳離
 
 if(n==4)
 {
-	printf("已錯誤3次，程式結束\a");
-	system("pause");
-    return 0;}
-	
+ printf("已錯誤3次，程式結束\a");
+ system("pause");
+ return 0;
+}
+
+/*********************************************************************/       //把座位都設成'-'(初始化)
+  
+for (i = 0; i < SIZE; i++)
+for (j = 0; j < SIZE; j++)
+seats[i][j] = '-';	
+
+/*********************************************************************/       //隨機生成10個座位 
 randnsit(seats);	
 /*********************************************************************/       //主選單  
 
