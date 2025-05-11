@@ -11,7 +11,7 @@ int main(void)
 	
 /*********************************************************************/ 	
 	
-	printf("這是E5A60的第二份程式作業\n");                                        //個人封面(題目1) 
+	printf("這是E5A60的第三份程式作業\n");                                        //個人封面(題目1) 
 	printf("EEEEEE    55555        AAA          66666     00000\n");
     printf("E        5            A   A        6          0   0\n");
     printf("EEEEE     55555      AAAAAAA        66666     0   0\n");
@@ -85,3 +85,14 @@ while(1){
 	
 	
 } 
+
+void casebegin(void)
+{
+	system("cls");
+    printf(" ---------------------------\n");             
+	printf("|    a.Available seats       |\n");
+    printf("|    b.Arrange for you           |\n");
+	printf("|    c.Choose by yourself          |\n");
+	printf("|    d. Exit                 |\n");
+	printf(" ---------------------------\n\n"); 
+return;
