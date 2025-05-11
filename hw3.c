@@ -8,7 +8,7 @@
 #define ROWS 9
 #define COLS 9
 
-void randsit(char seats[ROWS][COLS]);
+void randnsit(char seats[ROWS][COLS]);
 void casebegin(void);
 void casea(char seats[SIZE][SIZE]);
 void caseb(char seats[SIZE][SIZE]);
@@ -17,7 +17,7 @@ void cased(void);
 
 int main(void)
 {
-	int password=0,n,row, col; 
+	int password=0,n,row, col,i, j; 
 	char userinput,y;
 	char seats[SIZE][SIZE];
 /*********************************************************************/ 	
@@ -60,14 +60,13 @@ if(n==4)
 }
 
 /*********************************************************************/       //把座位都設成'-'(初始化)
-  
 for (i = 0; i < SIZE; i++)
-for (j = 0; j < SIZE; j++)
-seats[i][j] = '-';	
+        for (j = 0; j < SIZE; j++)
+            seats[i][j] = '-';	
 
-/*********************************************************************/       //隨機生成10個座位 
-randnsit(seats);	
-/*********************************************************************/       //主選單  
+
+randnsit(seats);	                                       
+  
 
 while(1){
 	
@@ -76,23 +75,24 @@ while(1){
                 
 				if (userinput == 'A' || userinput == 'a') 
 				{
-                casea();
+                casea(seats);
+                system("pause");
                 }
                 if (userinput == 'B' || userinput == 'b') 
 				{
-                caseb();
+                caseb(seats);
                 getch();
 				}
                 if (userinput == 'C' || userinput == 'c') 
 				{
-                casec();
+                casec(seats);
 				} 
                 if (userinput == 'D' || userinput == 'd') 
 				{
                 cased();
                 scanf("%c",&y);
 				}
-                if (y == 'N' || y == 'n') 
+                if (y == 'Y' || y == 'y') 
 				{ 
 	            system("pause"); 
                 return 0; 
@@ -105,27 +105,26 @@ while(1){
 } 
 /*********************************************************************/    //產生10個隨機座位
 void randnsit(char seats[ROWS][COLS]) {
-	
-	int sitbegin = 0;
-	
-	for(sitbegin=0;sitbegin<10;sitbegin++ ) 
-    {   
-     
-	    int r = rand() % ROWS;
+    int count = 0;
+    srand(time(NULL));
+    while (count < 10) {
+        int r = rand() % ROWS;
         int c = rand() % COLS;
         if (seats[r][c] != '*') {
             seats[r][c] = '*';
-            
+            count++;
         }
-    }    
-} 
+    }
+}
+
+/*********************************************************************/       //主選單  
 void casebegin(void)
 {
 	system("cls");
     printf(" ---------------------------\n");             
 	printf("|    a.Available seats       |\n");
-    printf("|    b.Arrange for you           |\n");
-	printf("|    c.Choose by yourself          |\n");
+    printf("|    b.Arrange for you       |\n");
+	printf("|    c.Choose by yourself    |\n");
 	printf("|    d. Exit                 |\n");
 	printf(" ---------------------------\n\n"); 
 return;
@@ -143,31 +142,38 @@ void casea(char seats[SIZE][SIZE]) {
 }
 
 
-void caseb(char seats[SIZE][SIZE], int row, int col) {
-    if (seats[row][col] == '-') {
-        seats[row][col] = '*';
-        printf("座位 %d, %d 預約成功！\n", row + 1, col + 1);
-    } else {
-        printf("這個座位已被預約！\n");
+void caseb(char seats[SIZE][SIZE]) {
+    
+	int i,j;
+	for ( i = 0; i < SIZE; i++) {
+        for ( j = 0; j < SIZE; j++) {
+            if (seats[i][j] == '-') {
+                seats[i][j] = '*';
+                printf("為您安排的座位為：%d排 %d號\n", i + 1, j + 1);
+                return;
+            }
+        }
     }
+    printf("目前無空位可預約！\n");
 }
 
-void casec(char seats[SIZE][SIZE], int row, int col) {
-    printf("請輸入要預約的座位（例如：3 4 代表第3排第4個座位）: ");
-                scanf("%d %d", &row, &col);
-                if (row >= 1 && row <= SIZE && col >= 1 && col <= SIZE) 
-				    {
-	                 if (seats[row][col] == '-') 
-					 {
-                     seats[row][col] = '*';
-                     printf("座位 %d, %d 預約成功！\n", row + 1, col + 1);
-                     } 
-					 else 
-					 {
-					 printf("這個座位已被預約！\n");
-					 }
-       
+void casec(char seats[SIZE][SIZE]) {
+    int row, col;
+    printf("請輸入要預約的座位（例如：3 4 表示第3排第4個座位）: ");
+    scanf("%d %d", &row, &col);
+    row--; col--;  // 使用者從1開始，但陣列從0開始
+
+    if (row >= 0 && row < SIZE && col >= 0 && col < SIZE) {
+        if (seats[row][col] == '-') {
+            seats[row][col] = '*';
+            printf("座位 %d排%d號 預約成功\n",row+1,col+1);
+        } else {
+            printf("這個座位已被預約！\n");
+        }
+    } else {
+        printf("輸入的座位超出範圍，請重新輸入。\n");
     }
+    system("pause");
 }
 
 void cased(void)                           //題目5 
