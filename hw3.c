@@ -117,8 +117,10 @@ return;
 }
 
 void casea(char seats[SIZE][SIZE]) {
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
+    
+	int i,j;
+	for ( i = 0; i < SIZE; i++) {
+        for ( j = 0; j < SIZE; j++) {
             printf("%c ", seats[i][j]);
         }
         printf("\n");
@@ -135,7 +137,29 @@ void caseb(char seats[SIZE][SIZE], int row, int col) {
     }
 }
 
+void casec(char seats[SIZE][SIZE], int row, int col) {
+    printf("請輸入要預約的座位（例如：3 4 代表第3排第4個座位）: ");
+                scanf("%d %d", &row, &col);
+                if (row >= 1 && row <= SIZE && col >= 1 && col <= SIZE) 
+				    {
+	                 if (seats[row][col] == '-') 
+					 {
+                     seats[row][col] = '*';
+                     printf("座位 %d, %d 預約成功！\n", row + 1, col + 1);
+                     } 
+					 else 
+					 {
+					 printf("這個座位已被預約！\n");
+					 }
+       
+    }
+}
 
-
-
+void cased(void)                           //題目5 
+{
+ 
+ printf("Continue?(y/n):");
+ fflush(stdin);  
+   
+}
 
