@@ -80,12 +80,25 @@ while(1){
                     
                    
         }	
-	
-	
-	
-	
-} 
+randnsit(seats);	
 
+} 
+/*********************************************************************/    //產生10個隨機座位
+void randnsit(char seats[ROWS][COLS]) {
+	
+	int sitbegin = 0;
+	
+	for(sitbegin=0;sitbegin<10;sitbegin++ ) 
+    {   
+     
+	    int r = rand() % ROWS;
+        int c = rand() % COLS;
+        if (seats[r][c] != '*') {
+            seats[r][c] = '*';
+            count++;
+        }
+    }    
+} 
 void casebegin(void)
 {
 	system("cls");
