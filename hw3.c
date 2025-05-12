@@ -81,7 +81,6 @@ while(1){
                 if (userinput == 'B' || userinput == 'b') 
 				{
                 caseb(seats);
-                getch();
 				}
                 if (userinput == 'C' || userinput == 'c') 
 				{
@@ -142,34 +141,54 @@ void casea(char seats[SIZE][SIZE]) {
 }
 
 
+
+    
 void caseb(char seats[SIZE][SIZE]) {
     
-	int sitnumber,count = 0;
-	printf("請輸入要預約的座位數(1~4): ");
-	scanf("%d",&sitnumber);
-	if (sitnumber == '1' || userinput == '2'||userinput == '3') 
-	{
-		while (count < 1) {
-        int r = rand() % ROWS;
-        int c = rand() % COLS;
-        if (seats[r][c] != '*'&&seats[r][c]) 
-		    {
-            seats[r][c] = '*';
-            count++;
-		    }
-	
-	
-	}
-	
-	
-	while (count < 10) {
-        int r = rand() % ROWS;
-        int c = rand() % COLS;
-        if (seats[r][c] != '*') {
-            seats[r][c] = '*';
-            count++;
+	int sitnumber, i, j, k, found = 0,attempt;
+    printf("請輸入要預約的座位數(1~4): ");
+    scanf("%d", &sitnumber);
+
+    if (sitnumber < 1 || sitnumber > 4) {
+        printf("輸入錯誤，請輸入 1~4 的數字。\n");
+        system("pause");
+        return;
+    }
+
+    // 針對 1~3 的需求，尋找連續空位
+    if (sitnumber >= 1 && sitnumber <= 3) {
+        srand(time(NULL));
+
+        for ( attempt = 0; attempt < 20 && !found; attempt++) { 
+            int row = rand() % SIZE;
+            for (j = 0; j <= SIZE - sitnumber; j++) {
+                int available = 1;
+                for (k = 0; k < sitnumber; k++) {
+                    if (seats[row][j + k] != '-') {
+                        available = 0;
+                        break;
+                    }
+                }
+                if (available) {
+                    for (k = 0; k < sitnumber; k++) {
+                        seats[row][j + k] = '*';
+                    }
+                    printf("已為您預約第 %d 排 第 %d 到 %d 座位。\n", row + 1, j + 1, j + sitnumber);
+                    found = 1;
+                    break;
+                }
+            }
         }
+
+       
+   
+    
+    }
+
+    system("pause");
 }
+
+	
 
 void casec(char seats[SIZE][SIZE]) {
     int row, col;
