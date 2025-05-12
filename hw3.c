@@ -4,25 +4,25 @@
 #include <string.h>
 #include <time.h>
 
-#define SIZE 9
+#define SIZE 9                               //定義陣列大小 
 #define ROWS 9
 #define COLS 9
 
-void randnsit(char seats[ROWS][COLS]);
+void randnsit(char seats[ROWS][COLS]);        //函式宣告  對應題目 
 void casebegin(void);
 void casea(char seats[SIZE][SIZE]);
 void caseb(char seats[SIZE][SIZE]);
 void casec(char seats[SIZE][SIZE]);
 void cased(void);
 
-int main(void)
+int main(void)                        
 {
-	int password=0,n,row, col,i, j; 
+	int password=0,n,row, col,i, j;          //變數定義 
 	char userinput,y;
 	char seats[SIZE][SIZE];
-/*********************************************************************/ 	
+/*********************************************************************/ 	         //個人封面(題目1)  
 	
-	printf("這是E5A60的第三份程式作業\n");                                        //個人封面(題目1) 
+	printf("這是E5A60的第三份程式作業\n");                                        
 	printf("EEEEEE    55555        AAA          66666     00000\n");
     printf("E        5            A   A        6          0   0\n");
     printf("EEEEE     55555      AAAAAAA        66666     0   0\n");
@@ -35,7 +35,7 @@ int main(void)
     printf("請輸入密碼(密碼為2025):");  
     scanf("%d", &password);           //輸入密碼 
 
-for (n=1;n<=2;n++)                       //錯誤3次會跳離 
+for (n=1;n<=3;n++)                       //n會執行1.2  n=2執行完後n++  n=3 
     { 
     system("cls");
 		if(password==2025)               //密碼審核 
@@ -52,9 +52,9 @@ for (n=1;n<=2;n++)                       //錯誤3次會跳離
            }
 	} 
 
-if(n==4)
+if(n==4)                                 //n=3   會結束程式 
 {
- printf("已錯誤3次，程式結束\a");
+ printf("已錯誤3次，程式結束\a");   
  system("pause");
  return 0;
 }
@@ -65,7 +65,7 @@ for (i = 0; i < SIZE; i++)
             seats[i][j] = '-';	
 
 
-randnsit(seats);	                                       
+randnsit(seats);                       //	                                       
   
 
 while(1){
