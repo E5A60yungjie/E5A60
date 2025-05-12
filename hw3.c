@@ -145,7 +145,7 @@ void casea(char seats[SIZE][SIZE]) {
     
 void caseb(char seats[SIZE][SIZE]) {
     
-	int sitnumber, i, j, k, found = 0,attempt;
+	int sitnumber, i, j, k, found = 0,attempt,row,col,confirm;
     printf("請輸入要預約的座位數(1~4): ");
     scanf("%d", &sitnumber);
 
@@ -154,13 +154,12 @@ void caseb(char seats[SIZE][SIZE]) {
         system("pause");
         return;
     }
-
-    // 針對 1~3 的需求，尋找連續空位
+    srand(time(NULL)); 
+    
     if (sitnumber >= 1 && sitnumber <= 3) {
-        srand(time(NULL));
-
+       
         for ( attempt = 0; attempt < 20 && !found; attempt++) { 
-            int row = rand() % SIZE;
+             row = rand() % SIZE;
             for (j = 0; j <= SIZE - sitnumber; j++) {
                 int available = 1;
                 for (k = 0; k < sitnumber; k++) {
@@ -171,20 +170,69 @@ void caseb(char seats[SIZE][SIZE]) {
                 }
                 if (available) {
                     for (k = 0; k < sitnumber; k++) {
-                        seats[row][j + k] = '*';
+                        seats[row][j + k] = '@';
                     }
-                    printf("已為您預約第 %d 排 第 %d 到 %d 座位。\n", row + 1, j + 1, j + sitnumber);
                     found = 1;
                     break;
                 }
             }
         }
-
+if (sitnumber == 4 && !found) 
+{
+        
+        for ( attempt = 0; attempt < 30 && !found; attempt++) 
+		{
+            row = rand() % SIZE;
+            for (col = 0; col <= SIZE - 4; col++) 
+			   {
+                if (seats[row][col] == '-' && seats[row][col + 1] == '-' &&
+                    seats[row][col + 2] == '-' && seats[row][col + 3] == '-') 
+					{
+                    seats[row][col] = seats[row][col + 1] = seats[row][col + 2] = seats[row][col + 3] = '@';
+                    found = 1;
+                    break;
+                    }
+                }
+        }
        
    
     
+}
+printf("建議座位如下（@為建議座位）：\n");
+    for (i = 0; i < SIZE; i++) {
+        for (j = 0; j < SIZE; j++) {
+            printf("%c ", seats[i][j]);
+        }
+        printf("\n");
     }
 
+    if (!found) {
+        printf("目前找不到符合需求的連續座位。\n");
+        system("pause");
+        return;
+    }
+
+    printf("是否接受此安排？(y/n): ");
+    scanf(" %c", &confirm);
+
+    if (confirm == 'y' || confirm == 'Y') {
+        
+        for (i = 0; i < SIZE; i++)
+            for (j = 0; j < SIZE; j++)
+                if (seats[i][j] == '@')
+                    seats[i][j] = '*';
+        printf("預約完成！\n");
+    } else {
+        
+        for (i = 0; i < SIZE; i++)
+            for (j = 0; j < SIZE; j++)
+                if (seats[i][j] == '@')
+                    seats[i][j] = '-';
+        printf("已取消此次安排，返回主選單。\n");
+    }
+
+   
+}
     system("pause");
 }
 
