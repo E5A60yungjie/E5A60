@@ -177,8 +177,9 @@ void caseb(char seats[SIZE][SIZE]) {
                 }
             }
         }
-if (sitnumber == 4 && !found) 
-{
+}
+    else if (sitnumber == 4 )
+    { 
         
         for ( attempt = 0; attempt < 30 && !found; attempt++) 
 		{
@@ -197,7 +198,7 @@ if (sitnumber == 4 && !found)
        
    
     
-}
+   }
 printf("建議座位如下（@為建議座位）：\n");
     for (i = 0; i < SIZE; i++) {
         for (j = 0; j < SIZE; j++) {
@@ -232,7 +233,7 @@ printf("建議座位如下（@為建議座位）：\n");
     }
 
    
-}
+
     system("pause");
 }
 
