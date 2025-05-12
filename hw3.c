@@ -144,17 +144,24 @@ void casea(char seats[SIZE][SIZE]) {
 
 void caseb(char seats[SIZE][SIZE]) {
     
-	int i,j;
-	for ( i = 0; i < SIZE; i++) {
-        for ( j = 0; j < SIZE; j++) {
-            if (seats[i][j] == '-') {
-                seats[i][j] = '*';
-                printf("為您安排的座位為：%d排 %d號\n", i + 1, j + 1);
-                return;
-            }
+	int sitnumber;
+	printf("請輸入要預約的座位數(1~4): ");
+	scanf("%d",&sitnumber);
+	if (sitnumber == '1' || userinput == '2'||userinput == '3') {
+	
+	
+	
+	
+	}
+	
+	
+	while (count < 10) {
+        int r = rand() % ROWS;
+        int c = rand() % COLS;
+        if (seats[r][c] != '*') {
+            seats[r][c] = '*';
+            count++;
         }
-    }
-    printf("目前無空位可預約！\n");
 }
 
 void casec(char seats[SIZE][SIZE]) {
