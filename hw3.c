@@ -4,6 +4,7 @@
 #include <string.h>
 #include <time.h>
 
+
 #define SIZE 9            // Define array size 
 #define ROWS 9
 #define COLS 9
