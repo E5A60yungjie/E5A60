@@ -20,6 +20,7 @@ typedef struct {
 void casebegin(void);
 void casea(void);
 void caseb(void);
+void casec(void);
 
 Student students[MAX_STUDENTS];
 int student_count = 0;
@@ -76,6 +77,7 @@ int main(void)
   casebegin(); 
   casea(); 
   caseb();
+  casec();
 
 } 
 
@@ -158,7 +160,7 @@ void casea() {
     system("pause"); 
 }
 
-
+/*********************************************************************/       //題目四(選項b)    
 void caseb() {
     int i;
 	system("cls");
@@ -169,4 +171,28 @@ void caseb() {
     system("pause"); 
 }
   
+/*********************************************************************/       //題目五(選項c)    
+
+void casec() {
+	int i;
+    system("cls");
+    char target[MAX_NAME];
+    int found = 0;
+    printf("請輸入要查詢的學生姓名：");
+    scanf("%s", target);
+
+    for ( i = 0; i < student_count; i++) {
+        if (strcmp(students[i].name, target) == 0) {
+            printf("姓名：%s\t學號：%s\n", students[i].name, students[i].id);
+            printf("數學：%.1f\t物理：%.1f\t英文：%.1f\t平均：%.1f\n",
+                   students[i].math, students[i].physics, students[i].english, students[i].average);
+            found = 1;
+            break;
+        }
+    }
+    if (!found) {
+        printf("查無此學生資料。\n");
+    }
+    system("pause"); 
+}
 
