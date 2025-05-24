@@ -4,6 +4,7 @@
 #include <string.h>
 #include <time.h>
 
+void casebegin(void);
 
 int main(void)
 {
@@ -48,4 +49,36 @@ int main(void)
 	
 /*********************************************************************/
 
+
+  casebegin(); 
 } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*********************************************************************/  //題目二(主畫面) 
+
+void casebegin(void)
+{
+	system("cls");
+	printf(" -----------------------------------\n");             
+	printf("|    a.Enter student grades         |\n");
+	printf("|    b.Display student grades       |\n");
+	printf("|    c.Search for student grades    |\n");
+	printf("|    d.Grade ranking                |\n");
+	printf("|    e.Exit system                  |\n");
+	printf(" -----------------------------------\n"); 
+	return;
+}
+
+/*********************************************************************/ 
