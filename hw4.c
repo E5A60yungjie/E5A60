@@ -21,6 +21,7 @@ void casebegin(void);
 void casea(void);
 void caseb(void);
 void casec(void);
+void cased(void);
 
 Student students[MAX_STUDENTS];
 int student_count = 0;
@@ -78,7 +79,7 @@ int main(void)
   casea(); 
   caseb();
   casec();
-
+  cased();
 } 
 
 
@@ -192,6 +193,39 @@ void casec() {
     }
     if (!found) {
         printf("查無此學生資料。\n");
+    }
+    system("pause"); 
+}
+
+/*********************************************************************/       //題目六(選項d) 
+
+int compare_avg(const void *a, const void *b) {
+    Student *s1 = (Student *)a;
+    Student *s2 = (Student *)b;
+    return (s2->average > s1->average) - (s2->average < s1->average);
+}
+
+void grade_ranking() {
+    int i;
+	system("cls");
+    qsort(students, student_count, sizeof(Student), compare_avg);
+    printf("%-10s %-10s %-6s\n", "姓名", "學號", "平均");
+    for ( i = 0; i < student_count; i++) {
+        printf("%-10s %-10s %-6.1f\n", students[i].name, students[i].id, students[i].average);
+    }
+    system("pause"); 
+}
+
+
+
+
+void cased() {
+    int i;
+	system("cls");
+    qsort(students, student_count, sizeof(Student), compare_avg);
+    printf("%-10s %-10s %-6s\n", "姓名", "學號", "平均");
+    for ( i = 0; i < student_count; i++) {
+        printf("%-10s %-10s %-6.1f\n", students[i].name, students[i].id, students[i].average);
     }
     system("pause"); 
 }
