@@ -3,11 +3,33 @@
 #include <conio.h>
 #include <string.h>
 #include <time.h>
+#include <ctype.h>
+
+#define MAX_STUDENTS 100
+#define MAX_NAME 50
+#define MAX_ID 10
+
+
+typedef struct {
+    char name[MAX_NAME];
+    char id[MAX_ID];
+    float math, physics, english;
+    float average;
+} Student;
 
 void casebegin(void);
+void casea(void);
+
+Student students[MAX_STUDENTS];
+int student_count = 0;
+
+
+
+
 
 int main(void)
 {
+	
 /*********************************************************************/ 	// 題目一 
 
 	int password=0,n,row, col,i, j;     // Variable declarations
@@ -51,6 +73,7 @@ int main(void)
 
 
   casebegin(); 
+  casea(); 
 } 
 
 
@@ -81,4 +104,55 @@ void casebegin(void)
 	return;
 }
 
-/*********************************************************************/ 
+/*********************************************************************/       //題目三(主畫面)  
+
+
+
+void casea() {
+    system("cls");
+    int n, i, j, valid;
+    printf("請輸入學生人數（5~10）：");
+    while (1) {
+        scanf("%d", &n);
+        if (n >= 5 && n <= 10) break;
+        printf("錯誤：人數需為 5~10，請重新輸入：");
+    }
+
+    for (i = 0; i < n; i++) {
+        printf("\n第 %d 位學生：\n", i + 1);
+        printf("姓名：");
+        scanf("%s", students[student_count].name);
+        while (1) {
+            printf("學號（6 位數字）：");
+            scanf("%s", students[student_count].id);
+            if (strlen(students[student_count].id) == 6) {
+                valid = 1;
+                for (j = 0; j < 6; j++) {
+                    if (!isdigit(students[student_count].id[j])) {
+                        valid = 0; break;
+                    }
+                }
+                if (valid) break;
+            }
+            printf("格式錯誤，請重新輸入。\n");
+        }
+
+        float *scores[] = { &students[student_count].math, &students[student_count].physics, &students[student_count].english };
+        const char *subjects[] = { "數學", "物理", "英文" };
+
+        for (j = 0; j < 3; j++) {
+            while (1) {
+                printf("%s成績（0~100）：", subjects[j]);
+                scanf("%f", scores[j]);
+                if (*scores[j] >= 0 && *scores[j] <= 100) break;
+                printf("輸入錯誤，請重新輸入。\n");
+            }
+        }
+
+        students[student_count].average = (*scores[0] + *scores[1] + *scores[2]) / 3;
+        student_count++;
+    }
+    system("pause"); 
+}
+         
+
