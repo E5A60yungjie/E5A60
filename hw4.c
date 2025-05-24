@@ -19,6 +19,7 @@ typedef struct {
 
 void casebegin(void);
 void casea(void);
+void caseb(void);
 
 Student students[MAX_STUDENTS];
 int student_count = 0;
@@ -74,6 +75,8 @@ int main(void)
 
   casebegin(); 
   casea(); 
+  caseb();
+
 } 
 
 
@@ -104,7 +107,7 @@ void casebegin(void)
 	return;
 }
 
-/*********************************************************************/       //題目三(主畫面)  
+/*********************************************************************/       //題目三(選項a)  
 
 
 
@@ -154,5 +157,16 @@ void casea() {
     }
     system("pause"); 
 }
-         
+
+
+void caseb() {
+    int i;
+	system("cls");
+    printf("%-10s %-10s %-6s %-6s %-6s %-6s\n", "姓名", "學號", "數學", "物理", "英文", "平均");     
+    for ( i = 0; i < student_count; i++) {
+        printf("%-10s %-10s %-6.1f %-6.1f %-6.1f %-6.1f\n",students[i].name,students[i].id,students[i].math,students[i].physics,students[i].english,students[i].average);
+    }
+    system("pause"); 
+}
+  
 
