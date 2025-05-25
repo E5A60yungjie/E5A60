@@ -22,6 +22,7 @@ void casea(void);
 void caseb(void);
 void casec(void);
 void cased(void);
+void casee(void);
 
 Student students[MAX_STUDENTS];
 int student_count = 0;
@@ -75,11 +76,7 @@ int main(void)
 /*********************************************************************/
 
 
-  casebegin(); 
-  casea(); 
-  caseb();
-  casec();
-  cased();
+ 
 } 
 
 
@@ -230,3 +227,10 @@ void cased() {
     system("pause"); 
 }
 
+/*********************************************************************/       //題目七(選項e) 
+
+void casee(void)
+{
+	printf("Continue?(y/n):");
+	fflush(stdin);  // Clear input buffer
+}
