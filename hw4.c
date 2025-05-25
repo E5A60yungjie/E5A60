@@ -75,6 +75,31 @@ int main(void)
 	
 /*********************************************************************/
 
+while(1) {   // Main menu: a, b, c, d choices
+		casebegin(); 
+		userinput=getch();
+		
+		if (userinput == 'A' || userinput == 'a') {
+			casea();     
+		}
+		if (userinput == 'B' || userinput == 'b') {
+			caseb();     
+		}
+		if (userinput == 'C' || userinput == 'c') {
+			casec();     
+		} 
+		if (userinput == 'D' || userinput == 'd') {
+			cased();          
+		}
+		if (userinput == 'E' || userinput == 'e') {
+			casee();          
+			scanf("%c",&y);
+		if (y == 'Y' || y == 'y') { 
+			system("pause"); 
+			return 0; 
+		}    
+	}
+} 
 
  
 } 
