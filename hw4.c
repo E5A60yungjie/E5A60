@@ -1,4 +1,4 @@
-#include <stdio.h>        // Header file declarations 
+#include <stdio.h>        //標頭檔
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
@@ -10,21 +10,21 @@
 #define MAX_ID 10
 
 
-typedef struct {
+typedef struct {                         //定義結構 
     char name[MAX_NAME];
     char id[MAX_ID];
     float math, physics, english;
     float average;
 } Student;
 
-void casebegin(void);
+void casebegin(void);                    //定義函數 主畫面到選項e 
 void casea(void);
 void caseb(void);
 void casec(void);
 void cased(void);
 void casee(void);
 
-Student students[MAX_STUDENTS];
+Student students[MAX_STUDENTS];            
 int student_count = 0;
 
 
@@ -49,11 +49,12 @@ int main(void)
 	system("pause");
     system("cls");
     
-    printf("請輸入密碼(密碼為2025):");  
-    scanf("%d", &password);    // Input password
+    printf("請輸入密碼(密碼為2025):");      //輸入密碼 
+    scanf("%d", &password);                //密碼存於password
+	 
 
-	// Password attempts (n=1,2,3; exit on n=4)
-	for (n=1;n<=3;n++) { 
+	
+	for (n=1;n<=3;n++) {                                     //迴圈3次  檢查密碼  如果對貼上輸入正確，歡迎   如果錯要求重新輸入  3次後跳離迴圈 
 		system("cls");
 		if(password==2025) {    // Password check
 			printf("輸入正確，歡迎!!\n");
@@ -67,7 +68,7 @@ int main(void)
 		}
 	} 
 
-	if(n==4) {   // Password failed 3 times, exit program
+	if(n==4) {                                                  //3次迴圈後，偵測是否是第3次跳離迴圈，如果是結束程式 
 		printf("已錯誤3次，程式結束\a");   
 		system("pause");
 		return 0;
@@ -75,7 +76,7 @@ int main(void)
 	
 /*********************************************************************/
 
-while(1) {   // Main menu: a, b, c, d choices
+while(1) {                                                              //無限迴圈，輸入a,b,c,d,e分別對應各函數 case a~e 
 		casebegin(); 
 		userinput=getch();
 		
@@ -107,16 +108,6 @@ while(1) {   // Main menu: a, b, c, d choices
 
 
 
-
-
-
-
-
-
-
-
-
-
 /*********************************************************************/  //題目二(主畫面) 
 
 void casebegin(void)
@@ -138,26 +129,26 @@ void casebegin(void)
 
 void casea() {
     system("cls");
-    int n, i, j, valid;
-    printf("請輸入學生人數（5~10）：");
-    while (1) {
-        scanf("%d", &n);
+    int n, i, j, valid;                                  
+    printf("請輸入學生人數（5~10）：");          
+    while (1) {                     
+        scanf("%d", &n);                                         //學生人數存於變數n，且偵測學生人數要在5~10以內，如果不再這個範圍要求重新輸入 
         if (n >= 5 && n <= 10) break;
         printf("錯誤：人數需為 5~10，請重新輸入：");
     }
 
-    for (i = 0; i < n; i++) {
-        printf("\n第 %d 位學生：\n", i + 1);
+    for (i = 0; i < n; i++) {                                            
+        printf("\n第 %d 位學生：\n", i + 1);                      
         printf("姓名：");
-        scanf("%s", students[student_count].name);
+        scanf("%s", students[student_count].name);                    //i會隨著回圈增加 0,1,2,3...  輸入學生1,2,3...的名子  
         while (1) {
             printf("學號（6 位數字）：");
-            scanf("%s", students[student_count].id);
-            if (strlen(students[student_count].id) == 6) {
+            scanf("%s", students[student_count].id);                   //輸入學號 
+            if (strlen(students[student_count].id) == 6) {             //偵測輸入的學生學號是否是6位數，如果是，valid設定為1 
                 valid = 1;
                 for (j = 0; j < 6; j++) {
-                    if (!isdigit(students[student_count].id[j])) {
-                        valid = 0; break;
+                    if (!isdigit(students[student_count].id[j])) {          //偵測6個字母是否都為數字 
+                        valid = 0; break;                                   //如果都為數字， valid設定為1，跳離迴圈 ，如果不是，valid設定為0就會使程式要求使用者重新輸入，並繼續迴圈 
                     }
                 }
                 if (valid) break;
@@ -165,25 +156,25 @@ void casea() {
             printf("格式錯誤，請重新輸入。\n");
         }
 
-        float *scores[] = { &students[student_count].math, &students[student_count].physics, &students[student_count].english };
-        const char *subjects[] = { "數學", "物理", "英文" };
-
+        float *scores[] = { &students[student_count].math, &students[student_count].physics, &students[student_count].english };       //定義一個float 指標陣列scores存 數學 物理 英文 成績 
+        const char *subjects[] = { "數學", "物理", "英文" };                                                                            //定義一個char  指標陣列subjects 包含 數學 物理 英文 
+    
         for (j = 0; j < 3; j++) {
             while (1) {
                 printf("%s成績（0~100）：", subjects[j]);
                 scanf("%f", scores[j]);
-                if (*scores[j] >= 0 && *scores[j] <= 100) break;
+                if (*scores[j] >= 0 && *scores[j] <= 100) break;          //偵測分數是否在0~100 有效範圍內 
                 printf("輸入錯誤，請重新輸入。\n");
             }
         }
 
-        students[student_count].average = (*scores[0] + *scores[1] + *scores[2]) / 3;
+        students[student_count].average = (*scores[0] + *scores[1] + *scores[2]) / 3;          //算平均 
         student_count++;
     }
     system("pause"); 
 }
 
-/*********************************************************************/       //題目四(選項b)    
+/*********************************************************************/       //題目四(選項b)     貼出所有學生的姓名 學號 各科成績 平均 
 void caseb() {
     int i;
 	system("cls");
@@ -205,7 +196,7 @@ void casec() {
     scanf("%s", target);
 
     for ( i = 0; i < student_count; i++) {
-        if (strcmp(students[i].name, target) == 0) {
+        if (strcmp(students[i].name, target) == 0) {                                //  strcmp 讓  students[i].name 跟   target 做比較 看是否一樣 如果一樣就會回傳0    因此如果一樣離開迴圈 
             printf("姓名：%s\t學號：%s\n", students[i].name, students[i].id);
             printf("數學：%.1f\t物理：%.1f\t英文：%.1f\t平均：%.1f\n",
                    students[i].math, students[i].physics, students[i].english, students[i].average);
@@ -213,7 +204,7 @@ void casec() {
             break;
         }
     }
-    if (!found) {
+    if (!found) {                                                            //如果 students[i].name 跟   target  布一樣  found 則會一樣是0 ,  !0=1  就會執行這段 印出 查無此學生資料 
         printf("查無此學生資料。\n");
     }
     system("pause"); 
@@ -221,10 +212,10 @@ void casec() {
 
 /*********************************************************************/       //題目六(選項d) 
 
-int compare_avg(const void *a, const void *b) {
+int compare_avg(const void *a, const void *b) {                               //比較分數大小 ，由高至低排                               
     Student *s1 = (Student *)a;
-    Student *s2 = (Student *)b;
-    return (s2->average > s1->average) - (s2->average < s1->average);
+    Student *s2 = (Student *)b;  
+    return (s2->average > s1->average) - (s2->average < s1->average);            
 }
 
 void grade_ranking() {
