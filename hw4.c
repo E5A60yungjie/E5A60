@@ -230,13 +230,11 @@ void grade_ranking() {
 }
 
 
-
-
 void cased() {
     int i;
 	system("cls");
-    qsort(students, student_count, sizeof(Student), compare_avg);
-    printf("%-10s %-10s %-6s\n", "姓名", "學號", "平均");
+    qsort(students, student_count, sizeof(Student), compare_avg);                                  //分數高到低排後 印出來 
+    printf("%-10s %-10s %-6s\n", "姓名", "學號", "平均");                                
     for ( i = 0; i < student_count; i++) {
         printf("%-10s %-10s %-6.1f\n", students[i].name, students[i].id, students[i].average);
     }
